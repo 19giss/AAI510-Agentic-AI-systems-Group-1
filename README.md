@@ -8,15 +8,35 @@ The goal of this project is to build a code-first AI agent that can map a user's
 
 ## Repository Structure
 
-- `docs/` - Project scope and acceptance criteria
-- `notebooks/` - Databricks notebooks for data pipeline, agent prototype, and evaluation traces
-- `data/` - Raw and processed datasets
-- `src/` - Agent tools and supporting Python functions
-- `outputs/` - Generated playlist outputs
-- `traces/` - Evaluation traces and run outputs
+* `docs/` - Project scope, acceptance criteria, and data setup notes
+* `notebooks/` - Databricks notebooks for data pipeline, agent prototype, and evaluation traces
+* `data/` - Placeholder folders for raw and processed data structure
+* `src/` - Agent tools and supporting Python functions
+* `outputs/` - Generated playlist outputs
+* `traces/` - Evaluation traces and run outputs
+
+## Data Setup
+
+The full datasets are not stored directly in GitHub. The `data/raw` and `data/processed` folders are included for project organization only.
+
+For the current Databricks workflow, the raw Kaggle datasets were uploaded into Databricks Catalog as:
+
+* `main.default.spotify_tracks_raw`
+* `main.default.spotify_data_clean_raw`
+* `main.default.track_data_final_raw`
+
+The processed MVP recommendation table created by the data pipeline notebook is:
+
+* `main.default.vibeml_tracks_processed`
+
+If another teammate runs the notebook in a different Databricks workspace, they will need to download the Kaggle CSV files, upload them into their own Databricks Catalog, and use the same table names above so the notebook runs without path changes.
 
 ## Planned Notebooks
 
-- `01_data_pipeline` - Load and prepare Spotify datasets
-- `02_agent_prototype` - Build the first version of the agent and tools
-- `03_evaluation_traces` - Run test scenarios and document evaluation results
+* `01_data_pipeline` - Load, inspect, clean, and prepare Spotify datasets
+* `02_agent_prototype` - Build the first version of the agent and tools
+* `03_evaluation_traces` - Run test scenarios and document evaluation results
+
+## Current MVP Scope
+
+The MVP uses the Kaggle Spotify datasets as the main data foundation. Live Spotify API access is a stretch goal for now.
