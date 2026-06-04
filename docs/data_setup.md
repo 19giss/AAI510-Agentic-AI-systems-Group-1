@@ -10,14 +10,16 @@ The VibeML data pipeline uses two Kaggle datasets for the MVP:
 
 ## Required Databricks Tables
 
+The `data/raw` and `data/processed` folders are included for project organization. Full datasets are not committed to GitHub because the working data is stored in Databricks Catalog. 
+
 The `01_data_pipeline` notebook expects the following raw tables to exist in Databricks Catalog:
 
+Raw Databricks tables:
 - `main.default.spotify_tracks_raw`
 - `main.default.spotify_data_clean_raw`
 - `main.default.track_data_final_raw`
 
-The processed MVP table created by the notebook is:
-
+Processed Databricks table:
 - `main.default.vibeml_tracks_processed`
 
 ## MVP Data Decision
