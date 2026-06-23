@@ -40,3 +40,7 @@ If another teammate runs the notebook in a different Databricks workspace, they 
 ## Current MVP Scope
 
 The MVP uses the Kaggle Spotify datasets as the main data foundation. Live Spotify API access is a stretch goal for now.
+
+
+## AI Tool Disclosure
+This project used AI tools in development. Databricks' built-in AI agent was used for generating portions of the code. Additional AI tools used by team members include ChatGPT, Claude, and Grok, applied to coding, animation creation, and presentation outlines.
