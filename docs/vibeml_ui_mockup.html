@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeML UI Mockup</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #121212;
+      --panel-soft: #1b1b1b;
+      --text: #ffffff;
+      --muted: #b6b6b6;
+      --green: #1ed760;
+      --cyan: #25d5ff;
+      --red: #ff4f5e;
+      --orange: #ff9f1c;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 22px 60px rgba(0,0,0,0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,120,0,0.35), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(37,213,255,0.30), transparent 28%),
+        radial-gradient(circle at 20% 85%, rgba(255,0,85,0.25), transparent 30%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+    }
+
+    .brand p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(30,215,96,0.12);
+      color: var(--green);
+      border: 1px solid rgba(30,215,96,0.32);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.9fr) minmax(360px, 1.4fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      backdrop-filter: blur(12px);
+    }
+
+    .card h2, .card h3 {
+      margin: 0 0 14px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 116px;
+      resize: vertical;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(0,0,0,0.35);
+      color: var(--text);
+      padding: 16px;
+      font-size: 1rem;
+      outline: none;
+      line-height: 1.45;
+    }
+
+    textarea:focus { border-color: rgba(30,215,96,0.7); }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-weight: 700;
+    }
+
+    .chip:hover, .chip.active {
+      background: rgba(30,215,96,0.18);
+      border-color: rgba(30,215,96,0.65);
+      color: var(--green);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    button.primary, button.secondary {
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    button.primary {
+      background: var(--green);
+      color: #001b09;
+    }
+
+    button.secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    button.primary:hover, button.secondary:hover { transform: translateY(-1px); }
+
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      font-size: 0.85rem;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(37,213,255,0.12);
+      color: #9cecff;
+      border: 1px solid rgba(37,213,255,0.28);
+    }
+
+    .results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .status {
+      font-size: 0.85rem;
+      color: var(--green);
+      border: 1px solid rgba(30,215,96,0.4);
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(30,215,96,0.10);
+      white-space: nowrap;
+    }
+
+    .playlist {
+      display: grid;
+      gap: 10px;
+    }
+
+    .track {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .track-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: rgba(30,215,96,0.12);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .track-title { font-weight: 900; }
+    .track-meta { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+
+    .verified {
+      color: var(--green);
+      font-weight: 900;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+
+    .explain {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: #e8e8e8;
+      line-height: 1.5;
+    }
+
+    .feedback {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .feedback button {
+      background: var(--panel-soft);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .feedback button:hover { border-color: var(--green); color: var(--green); }
+
+    .toast {
+      margin-top: 12px;
+      color: var(--muted);
+      min-height: 22px;
+      font-size: 0.95rem;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero { flex-direction: column; align-items: flex-start; }
+      .grid { grid-template-columns: 1fr; }
+      .profile-stats { grid-template-columns: 1fr; }
+      .track { grid-template-columns: 36px 1fr; }
+      .verified { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="brand">
+        <div class="badge">● Interactive UI Mockup</div>
+        <h1>VibeML</h1>
+        <p>A personalized Spotify playlist generation agent that uses user context, song metadata, audio features, and feedback to recommend playlists.</p>
+      </div>
+    </section>
+
+    <section class="grid">
+      <aside class="card">
+        <div class="label">User C profile</div>
+        <h2>Low-Activity Spotify User</h2>
+        <p style="color: var(--muted); line-height: 1.5;">This mockup uses the User C result from testing: limited recent history, some liked songs, and garage/alt-rock preferences.</p>
+
+        <div class="profile-stats">
+          <div class="stat"><strong>18</strong><span>Liked songs</span></div>
+          <div class="stat"><strong>4</strong><span>Playlists</span></div>
+          <div class="stat"><strong>0</strong><span>Recently played</span></div>
+        </div>
+
+        <div class="label">Preferred genres</div>
+        <div class="pill-list">
+          <span class="pill">garage</span>
+          <span class="pill">alt-rock</span>
+        </div>
+
+        <div class="label" style="margin-top: 18px;">Top artists</div>
+        <div class="pill-list">
+          <span class="pill">Oh Land</span>
+          <span class="pill">Catfish and the Bottlemen</span>
+          <span class="pill">Cucovich</span>
+          <span class="pill">Kasabian</span>
+          <span class="pill">Franz Ferdinand</span>
+        </div>
+      </aside>
+
+      <section class="card">
+        <div class="label">Playlist request</div>
+        <h2>What vibe are you looking for?</h2>
+        <textarea id="prompt">I barely use Spotify, but I want an upbeat alt-rock playlist for driving that is energetic but not too intense.</textarea>
+
+        <div class="chips" aria-label="Sample prompt chips">
+          <button class="chip active" data-preset="drive">Late-night drive</button>
+          <button class="chip" data-preset="study">Study / no lyrics</button>
+          <button class="chip" data-preset="gym">Gym energy</button>
+          <button class="chip" data-preset="chill">Calm acoustic</button>
+        </div>
+
+        <div class="button-row">
+          <button class="primary" id="generateBtn">Generate playlist</button>
+          <button class="secondary" id="resetBtn">Reset demo</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="card" style="margin-top: 22px;">
+      <div class="results-header">
+        <div>
+          <div class="label">Agent output</div>
+          <h2 id="playlistTitle">Driving Alt-Rock Starter Playlist</h2>
+        </div>
+        <div class="status" id="status">Spotify + dataset verified mock</div>
+      </div>
+
+      <div class="playlist" id="playlist"></div>
+
+      <div class="explain" id="explanation"></div>
+
+      <div class="feedback">
+        <button data-feedback="accept">Accept playlist</button>
+        <button data-feedback="replace">Replace a song</button>
+        <button data-feedback="more">More like this</button>
+        <button data-feedback="less">Less intense</button>
+      </div>
+      <div class="toast" id="toast"></div>
+    </section>
+
+    <p class="footer-note">Front-end mockup only. The working agent, tools, traces, and evaluations live in the Databricks notebooks.</p>
+  </main>
+
+  <script>
+    const promptBox = document.getElementById('prompt');
+    const playlist = document.getElementById('playlist');
+    const explanation = document.getElementById('explanation');
+    const playlistTitle = document.getElementById('playlistTitle');
+    const toast = document.getElementById('toast');
+    const status = document.getElementById('status');
+
+    const data = {
+      drive: {
+        title: 'Driving Alt-Rock Starter Playlist',
+        prompt: 'I barely use Spotify, but I want an upbeat alt-rock playlist for driving that is energetic but not too intense.',
+        songs: [
+          ['Human', 'The Killers', 'alt-rock · verified'],
+          ['Compass', 'The Neighbourhood', 'moody alt-rock · verified'],
+          ['Scar Tissue', 'Red Hot Chili Peppers', 'mellow rock · verified'],
+          ['Come As You Are', 'Nirvana', 'grunge/alt-rock · verified'],
+          ['Animal I Have Become', 'Three Days Grace', 'high-energy rock · verified']
+        ],
+        explanation: 'VibeML uses User C’s limited profile context, especially garage and alt-rock preferences, then combines that with the prompt and the Kaggle audio-feature dataset. Because recently played history is unavailable, the agent relies more on the request, liked-song patterns, genre matching, energy, tempo, and Spotify/catalog validation.'
+      },
+      study: {
+        title: 'Study / Focus Playlist Test',
+        prompt: 'I need a calm study playlist with no lyrics and low distraction.',
+        songs: [
+          ['Dreaming Glory', 'Twinkz', 'study · verified']
+        ],
+        explanation: 'This scenario exposed a limitation. The agent understood the study/no-lyrics request, but strict constraints returned too few songs. Future versions need stronger fallback logic and better validation for instrumental or no-lyrics requirements.'
+      },
+      gym: {
+        title: 'High-Energy Gym Playlist',
+        prompt: 'I want fast Afrobeat music for the gym that keeps my energy high.',
+        songs: [
+          ['Reza Forte', 'BaianaSystem', 'energetic · verified'],
+          ['Saci', 'BaianaSystem', 'rhythmic · verified'],
+          ['Soul Makossa', 'Tropkillaz Remix', 'afrobeat classic/remix · verified'],
+          ['Tá Amarrado', 'Gilsons', 'upbeat · verified']
+        ],
+        explanation: 'This mirrors the LLM comparison trace. GPT-OSS-120B scored higher than Llama 3.3 70B because it produced a stronger gym-energy match, but human review was still needed to decide whether the songs truly felt workout-ready.'
+      },
+      chill: {
+        title: 'Calm Acoustic Playlist',
+        prompt: 'I want a calm acoustic playlist for relaxing at night.',
+        songs: [
+          ['Glimpse of Us', 'Joji', 'calm · verified'],
+          ['Something in the Orange', 'Zach Bryan', 'acoustic · verified'],
+          ['lovely', 'Billie Eilish; Khalid', 'soft pop · verified'],
+          ['Photograph', 'Ed Sheeran', 'acoustic pop · verified'],
+          ['Memories', 'Maroon 5', 'mellow pop · verified']
+        ],
+        explanation: 'This playlist uses the calm/acoustic filtering logic from the data pipeline, emphasizing lower energy, higher acousticness, and popular tracks that fit a relaxed mood.'
+      }
+    };
+
+    function render(kind = 'drive') {
+      const item = data[kind];
+      playlistTitle.textContent = item.title;
+      promptBox.value = item.prompt;
+      status.textContent = kind === 'study' ? 'Constraint limitation observed' : 'Spotify + dataset verified mock';
+      playlist.innerHTML = item.songs.map((song, index) => `
+        <div class="track">
+          <div class="track-num">${index + 1}</div>
+          <div>
+            <div class="track-title">${song[0]}</div>
+            <div class="track-meta">${song[1]} · ${song[2]}</div>
+          </div>
+          <div class="verified">✓ verified</div>
+        </div>
+      `).join('');
+      explanation.textContent = item.explanation;
+      toast.textContent = '';
+    }
+
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        render(chip.dataset.preset);
+      });
+    });
+
+    document.getElementById('generateBtn').addEventListener('click', () => {
+      const text = promptBox.value.toLowerCase();
+      let preset = 'drive';
+      if (text.includes('study') || text.includes('lyrics') || text.includes('focus')) preset = 'study';
+      else if (text.includes('gym') || text.includes('workout') || text.includes('energy')) preset = 'gym';
+      else if (text.includes('calm') || text.includes('acoustic') || text.includes('relax')) preset = 'chill';
+      render(preset);
+      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.preset === preset));
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.preset === 'drive'));
+      render('drive');
+    });
+
+    document.querySelectorAll('[data-feedback]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.dataset.feedback;
+        const messages = {
+          accept: 'Feedback captured: user accepted the playlist. In the full agent, this could save the playlist to Spotify.',
+          replace: 'Feedback captured: replace one song. The agent would call the feedback refinement tool.',
+          more: 'Feedback captured: more like this. The agent would tighten genre/audio-feature matching.',
+          less: 'Feedback captured: less intense. The agent would lower energy/tempo targets.'
+        };
+        toast.textContent = messages[action];
+      });
+    });
+
+    render('drive');
+  </script>
+</body>
+</html>
